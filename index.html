@@ -24,20 +24,6 @@
 <link rel="manifest" id="mf">
 <link rel="icon" id="ic" type="image/svg+xml">
 <link rel="apple-touch-icon" id="ai">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-{"@type":"Product","name":"Apple iPhone 13","brand":{"@type":"Brand","name":"Apple"},"image":"https://YOUR-DOMAIN.com/images/iphone-13-colors.webp","description":"آيفون 13 العادي بشاشة 6.1 بوصة Super Retina XDR ومعالج A15 Bionic وكاميرا خلفية مزدوجة 12 ميجابكسل.","color":"Midnight, Starlight, Blue, Pink, Green, Red","offers":{"@type":"AggregateOffer","priceCurrency":"EGP","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Iphone 13 EG"}}},
-{"@type":"LocalBusiness","name":"Iphone 13 EG","telephone":"+201154146463","areaServed":"EG","url":"https://YOUR-DOMAIN.com/"},
-{"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"هل Apple Pay شغّال في مصر؟","acceptedAnswer":{"@type":"Answer","text":"نعم، Apple Pay متاح في مصر منذ ديسمبر 2024 مع البنك الأهلي وبنك مصر وCIB وبنوك أخرى لاحقًا، والتوفر يعتمد على البنك المصدر للكارت."}},
-{"@type":"Question","name":"هل تطبيقات البنوك وإنستاباي آمنة على آيفون؟","acceptedAnswer":{"@type":"Answer","text":"نعم، تعمل مع Face ID وتشفير النظام وعزل التطبيقات، ويفضل تحميلها من App Store الرسمي."}},
-{"@type":"Question","name":"هل آيفون 13 العادي لسه يستاهل الشراء؟","acceptedAnswer":{"@type":"Answer","text":"نعم، لأنه يجمع معالج A15 القوي وكاميرا ممتازة وتحديثات متوقعة لسنوات قادمة وسعر إعادة بيع أعلى من أغلب المنافسين."}},
-{"@type":"Question","name":"كم سنة تحديثات متبقية لآيفون 13؟","acceptedAnswer":{"@type":"Answer","text":"حسب سجل أبل في دعم أجهزتها، المتوقع أن يستمر الدعم نحو 3 سنوات إضافية، لكن أبل لا تعلن مدة رسمية."}},
-{"@type":"Question","name":"هل آيفون 13 بيدعم 5G؟","acceptedAnswer":{"@type":"Answer","text":"نعم يدعم 5G، لكن الاستفادة منه في مصر تعتمد على تغطية الشبكات."}},
-{"@type":"Question","name":"هل آيفون 13 مقاوم للماء؟","acceptedAnswer":{"@type":"Answer","text":"نعم، مقاوم للماء والغبار بمعيار IP68 حتى عمق 6 أمتار لمدة 30 دقيقة، والضمان لا يغطي أضرار السوائل."}},
-{"@type":"Question","name":"ما سعة التخزين المتاحة؟","acceptedAnswer":{"@type":"Answer","text":"128 و256 و512 جيجابايت، ولا يوجد دعم لكارت ذاكرة."}}
-]}]}
-</script>
 <style>
 :root{--blue:#A7C1D9;--pink:#FAE0DC;--star:#F0E4D3;--green:#394C38;--mid:#1F2020;--red:#BF0013;--bg:#fdf8f4;--card:#fff;--tx:#1F2020;--mut:#5a6068;--r:20px}
 @media(prefers-color-scheme:dark){:root{--bg:#141516;--card:#202223;--tx:#f4efe9;--mut:#b4bac1}}
@@ -46,24 +32,27 @@ html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:var(--bg);color:var(--tx);line-height:1.8;padding-bottom:env(safe-area-inset-bottom)}
 a{color:inherit}
 .w{max-width:1050px;margin:auto;padding:0 18px}
+
+/* Navbar & Menu Updates */
 header.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid #8883;padding-top:env(safe-area-inset-top)}
-.nav .w{display:flex;align-items:center;justify-content:space-between;gap:10px;height:56px}
+.nav .w{display:flex;align-items:center;justify-content:space-between;height:56px;position:relative}
 .logo{font-weight:800;font-size:1.1rem;text-decoration:none}
 .logo b{color:#5b86ad}
-.nav nav{display:flex;gap:14px;overflow-x:auto;font-size:.88rem;white-space:nowrap}
-.nav nav a{text-decoration:none;color:var(--mut)}
+.menu-btn{background:none;border:none;font-size:1.6rem;color:var(--tx);cursor:pointer;display:grid;place-items:center;width:40px;height:40px}
+.nav nav{display:none;flex-direction:column;position:absolute;top:60px;right:18px;background:var(--card);padding:15px;border-radius:16px;box-shadow:0 8px 30px #0003;border:1px solid #8882;min-width:220px;gap:8px}
+.nav nav.active{display:flex}
+.nav nav a{text-decoration:none;color:var(--tx);padding:10px 14px;border-radius:10px;font-size:.95rem;transition:background .2s}
+.nav nav a:hover{background:color-mix(in srgb,var(--tx) 5%,transparent)}
+.nav nav hr{border:none;border-top:1px solid #8883;margin:4px 0}
+.nav-mut{color:var(--mut) !important;font-size:.85rem !important}
+
 .btn{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#073b1b;font-weight:700;padding:12px 22px;border-radius:99px;text-decoration:none;border:0;cursor:pointer;font-size:1rem}
 .btn.alt{background:var(--mid);color:#fff}
 .hero{background:linear-gradient(135deg,var(--blue),var(--pink) 55%,var(--star));color:#1F2020;padding:46px 0 40px;text-align:center;position:relative;overflow:hidden}
 .hero h1{font-size:clamp(1.7rem,5.5vw,3rem);line-height:1.4;margin-bottom:12px}
 .hero p{max-width:640px;margin:0 auto 22px;font-size:1.05rem}
 .hero .cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.phone{width:150px;height:300px;margin:28px auto 0;border-radius:30px;background:linear-gradient(160deg,#cfe0ee,#f6cfd0);border:6px solid #1F2020;position:relative;box-shadow:0 20px 40px #0003}
-.phone:before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:54px;height:15px;border-radius:9px;background:#1F2020}
-.phone:after{content:"";position:absolute;top:-1px;right:-1px;width:56px;height:56px;border-radius:14px;background:#1F2020;opacity:0}
 .hero-img{display:block;width:min(100%,520px);height:auto;margin:26px auto 0;border-radius:24px;box-shadow:0 18px 40px #0003}
-.cam{position:absolute;top:34px;right:14px;width:46px;height:46px;border-radius:14px;background:#1F2020;display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:7px}
-.cam i{border-radius:50%;background:radial-gradient(#4a6a8a,#0a0f14)}
 .dots{display:flex;gap:10px;justify-content:center;margin-top:16px}
 .dots span{width:22px;height:22px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #0002}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:-26px;position:relative}
@@ -74,23 +63,53 @@ section{padding:46px 0}
 h2{font-size:clamp(1.4rem,4vw,2rem);margin-bottom:8px;line-height:1.5}
 .lead{color:var(--mut);margin-bottom:22px;max-width:780px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.card{background:var(--card);border-radius:var(--r);padding:20px;box-shadow:0 4px 16px #0001;border-top:5px solid var(--blue)}
-.card:nth-child(3n+2){border-top-color:#f2b7bf}
-.card:nth-child(3n){border-top-color:var(--star)}
+.card{background:var(--card);border-radius:var(--r);padding:20px;box-shadow:0 4px 16px #0001}
 .card h3{font-size:1.08rem;margin-bottom:6px}
 .card p{color:var(--mut);font-size:.95rem}
+
+#why .card { border-top: 6px solid; border-radius: 20px 20px var(--r) var(--r); }
+#why .card:nth-child(1) { border-top-color: var(--blue); }
+#why .card:nth-child(2) { border-top-color: var(--mid); }
+#why .card:nth-child(3) { border-top-color: var(--star); }
+#why .card:nth-child(4) { border-top-color: var(--pink); }
+#why .card:nth-child(5) { border-top-color: var(--green); }
+#why .card:nth-child(6) { border-top-color: var(--red); }
+
 .pc{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.pc .card { border-top: 5px solid var(--blue); }
+.pc .card:nth-child(2) { border-top-color: var(--star); }
 .pc ul{list-style:none}
 .pc li{padding:8px 0;border-bottom:1px dashed #8883;font-size:.95rem}
 .pro li:before{content:"✅ "}
 .con li:before{content:"⚠️ "}
+
+/* Tables updates */
 .tw{overflow-x:auto;border-radius:var(--r);background:var(--card);box-shadow:0 4px 16px #0001}
-table{width:100%;border-collapse:collapse;min-width:720px;font-size:.92rem}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
 th,td{padding:12px 14px;text-align:right;border-bottom:1px solid #8882;vertical-align:top}
 thead th{background:var(--mid);color:#fff;white-space:nowrap}
 td:first-child{font-weight:700;background:#a7c1d922}
 td.me,th.me{background:#fae0dc55}
 thead th.me{background:#5b86ad}
+
+/* Select styling for comparison */
+select#comp-sel { background: var(--bg); color: var(--tx); border: 1px solid #8885; padding: 6px 10px; border-radius: 8px; font-family: inherit; font-weight: bold; outline: none; cursor: pointer; width: 100%; max-width: 250px; }
+select#comp-sel:focus { border-color: #5b86ad; }
+
+/* Mobile Optimizations for tables */
+@media (max-width: 768px) {
+    /* Responsive Specs Table (Cards layout) */
+    #specs .tw { background: transparent; box-shadow: none; border-radius: 0; padding: 0; }
+    #specs table, #specs tbody, #specs tr, #specs td { display: block; width: 100%; }
+    #specs tr { margin-bottom: 12px; background: var(--card); border-radius: 12px; box-shadow: 0 4px 10px #0001; overflow: hidden; border: 1px solid #8882; }
+    #specs td { padding: 12px 16px; border: none; }
+    #specs td:first-child { background: color-mix(in srgb, var(--tx) 5%, transparent); color: #5b86ad; font-weight: 800; border-bottom: 1px solid #8882; }
+    
+    /* Responsive Comparison Table */
+    #compare th, #compare td { padding: 10px 8px; font-size: .85rem; word-break: break-word; }
+    select#comp-sel { font-size: .8rem; padding: 6px 4px; white-space: normal; }
+}
+
 .note{font-size:.82rem;color:var(--mut);margin-top:10px}
 details{background:var(--card);border-radius:16px;padding:14px 18px;margin-bottom:10px;box-shadow:0 3px 12px #0001}
 summary{cursor:pointer;font-weight:700;list-style:none}
@@ -100,19 +119,43 @@ details p{margin-top:8px;color:var(--mut)}
 .cta-b{background:linear-gradient(135deg,var(--green),var(--mid));color:#fff;text-align:center;border-radius:28px;padding:36px 20px}
 .cta-b p{margin:8px 0 18px;opacity:.9}
 footer{padding:26px 0 90px;text-align:center;color:var(--mut);font-size:.85rem}
+footer a { text-decoration: none; color: inherit; margin: 0 5px; }
+footer a:hover { color: #5b86ad; }
 .fab{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:30;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 20px #0004;text-decoration:none}
 .fab svg{width:32px;height:32px;fill:#fff}
 .em{background:linear-gradient(135deg,var(--pink),var(--star));color:#1F2020;border-radius:28px;padding:40px 30px}
-.em .card{border-top:0;background:#ffffffc8;color:#1F2020}
+.em .card{background:#ffffffc8;color:#1F2020}
 .em .card p{color:#444}
 #inst{display:none}
 @media (max-width:768px) { .em { padding: 30px 22px; } }
+
+/* Modal Styles */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000000aa; z-index: 100; place-items: center; padding: 18px; backdrop-filter: blur(5px); }
+.modal.active { display: grid; }
+.modal-content { background: var(--bg); width: 100%; max-width: 500px; padding: 30px; border-radius: 24px; position: relative; max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 40px #0005; }
+.close-btn { position: absolute; top: 20px; left: 20px; font-size: 1.6rem; cursor: pointer; color: var(--tx); background: color-mix(in srgb,var(--tx) 10%,transparent); width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; line-height: 1; transition: 0.2s; }
+.close-btn:hover { background: color-mix(in srgb,var(--tx) 20%,transparent); }
+.modal h2 { margin-bottom: 16px; font-size: 1.6rem; color: #5b86ad; border-bottom: 2px solid #8882; padding-bottom: 10px; }
+.modal-body { color: var(--tx); font-size: 1rem; line-height: 1.7; }
+.modal-body p { margin-bottom: 10px; }
 </style>
 </head>
 <body>
 <header class="nav"><div class="w">
 <a class="logo" href="#top">Iphone 13 <b>EG</b></a>
-<nav aria-label="التنقل"><a href="#why">لماذا 13</a><a href="#specs">المواصفات</a><a href="#pros">المميزات والعيوب</a><a href="#compare">المقارنة</a><a href="#faq">الأسئلة</a></nav>
+<button class="menu-btn" id="menu-btn" aria-label="القائمة">☰</button>
+<nav aria-label="التنقل" id="nav-menu">
+    <a href="#why">لماذا 13</a>
+    <a href="#specs">المواصفات</a>
+    <a href="#pros">المميزات والعيوب</a>
+    <a href="#compare">المقارنة</a>
+    <a href="#faq">الأسئلة الشائعة</a>
+    <hr>
+    <a href="#" data-modal="settings">الإعدادات</a>
+    <a href="#" data-modal="terms" class="nav-mut">شروط الاستخدام</a>
+    <a href="#" data-modal="privacy" class="nav-mut">سياسة الخصوصية</a>
+    <a href="#" data-modal="return" class="nav-mut">سياسة البيع والاسترجاع</a>
+</nav>
 </div></header>
 
 <main id="top">
@@ -133,9 +176,10 @@ footer{padding:26px 0 90px;text-align:center;color:var(--mut);font-size:.85rem}
 <div class="stat"><b>19 ساعة</b><small>تشغيل فيديو</small></div>
 <div class="stat"><b>+3 سنوات</b><small>تحديثات متوقعة</small></div>
 <div class="stat"><b>Apple Pay</b><small>شغّال في مصر</small></div>
+<!-- البطاقة السادسة المضافة للسمترية -->
+<div class="stat"><b>Face ID</b><small>أمان تام</small></div>
 </div></div>
 
-<!-- القسم الجديد المدمج والشامل لجميع نقاط البيع بلمسة عاطفية وسيو قوي -->
 <section id="why"><div class="w"><div class="em">
 <h2 style="font-size:clamp(1.5rem,4vw,2.2rem);margin-bottom:12px;color:#1F2020">لماذا آيفون 13 العادي هو استثمارك الأذكى؟</h2>
 <p class="lead" style="color:#444;max-width:800px;font-size:1.05rem">
@@ -169,6 +213,7 @@ footer{padding:26px 0 90px;text-align:center;color:var(--mut);font-size:.85rem}
 </div>
 </div></div></section>
 
+<!-- تم تعديل الجدول ليتجاوب بشكل ممتاز مع الجوال كبطاقات -->
 <section id="specs"><div class="w">
 <h2>مواصفات آيفون 13 العادي</h2>
 <p class="lead">الملخص الكامل للمواصفات الأساسية.</p>
@@ -199,6 +244,8 @@ footer{padding:26px 0 90px;text-align:center;color:var(--mut);font-size:.85rem}
 <li>شاشة OLED بألوان دقيقة وسطوع عالٍ</li>
 <li>بطارية ممتازة نسبةً إلى الحجم</li>
 <li>مقاومة ماء وغبار IP68</li>
+<!-- تمت إضافة الأمان والدفع في المميزات -->
+<li>أمان متقدم بـ Face ID ودعم Apple Pay وإنستاباي</li>
 <li>تحديثات طويلة المدى وأمان عالٍ</li>
 <li>إعادة بيع قوية وطلب مستمر</li>
 <li>تصميم وألوان جذابة وحجم مريح</li>
@@ -215,20 +262,97 @@ footer{padding:26px 0 90px;text-align:center;color:var(--mut);font-size:.85rem}
 </ul></div>
 </div></div></section>
 
+<!-- تم تعديل جدول المقارنات ليحتوي على قائمة منسدلة وعنصر الأمان والدفع -->
 <section id="compare"><div class="w">
-<h2>آيفون 13 ضد ثلاثة منافسين في فئة 16 إلى 25 ألف جنيه</h2>
-<p class="lead">ركزنا على جودة التصوير والمعالج والألعاب والقيمة الاجتماعية.</p>
-<div class="tw"><table>
-<thead><tr><th>الفئة</th><th class="me">آيفون 13</th><th>Samsung Galaxy A56</th><th>Poco X7 Pro</th><th>Oppo Reno 13 F</th></tr></thead>
+<h2>آيفون 13 ضد المنافسين في فئة 16 إلى 25 ألف جنيه</h2>
+<p class="lead">اختر الهاتف المنافس من القائمة أدناه لمعرفة الفروقات الأساسية.</p>
+<div class="tw"><table id="compare-table">
+<thead><tr>
+    <th>الفئة</th>
+    <th class="me" style="width:40%">آيفون 13</th>
+    <th>
+        <!-- القائمة المنسدلة لاختيار الجهاز المنافس -->
+        <select id="comp-sel" aria-label="اختر الهاتف المنافس">
+            <option value="c1">Samsung Galaxy A56</option>
+            <option value="c2">Poco X7 Pro</option>
+            <option value="c3">Oppo Reno 13 F</option>
+        </select>
+    </th>
+</tr></thead>
 <tbody>
-<tr><td>المعالج</td><td class="me">A15 Bionic، أداء مستمر وثابت</td><td>Exynos 1580، متوسط وكافٍ للاستخدام اليومي</td><td>Dimensity 8400 Ultra، الأقوى رقميًا بين الثلاثة</td><td>فئة متوسطة، مناسب للاستخدام اليومي</td></tr>
-<tr><td>الألعاب</td><td class="me">ثبات ممتاز وتحسين من الألعاب لـiOS</td><td>جيد في الألعاب المتوسطة</td><td>قوي جدًا لكن الحرارة قد ترتفع</td><td>جيد للألعاب الخفيفة والمتوسطة</td></tr>
-<tr><td>جودة التصوير</td><td class="me">الأفضل في الفيديو، ألوان ثابتة وموثوقة</td><td>صور جيدة وتكبير محدود</td><td>صور قوية في النهار والفيديو أقل ثباتًا</td><td>صور بورتريه جيدة وفيديو أقل</td></tr>
-<tr><td>الشاشة</td><td class="me">OLED، 60 هرتز</td><td>AMOLED، 120 هرتز</td><td>AMOLED، 120 هرتز</td><td>AMOLED، 120 هرتز</td></tr>
-<tr><td>التحديثات</td><td class="me">نحو 3 سنوات إضافية متوقعة</td><td>سامسونج تعلن فترة دعم طويلة لهذه الفئة</td><td>دعم أقصر عادة</td><td>دعم أقصر عادة</td></tr>
-<tr><td>إعادة البيع</td><td class="me">الأعلى والأسرع</td><td>جيدة</td><td>متوسطة وتنخفض بسرعة</td><td>متوسطة إلى ضعيفة</td></tr>
-<tr><td>القيمة الاجتماعية</td><td class="me">الأعلى، علامة مكانة وجودة</td><td>جيدة وموثوقة</td><td>للمهتمين بالمواصفات</td><td>للمهتمين بالتصميم</td></tr>
-<tr><td>الخلاصة</td><td class="me"><strong>الأفضل توازنًا وعمرًا وقيمة</strong></td><td>خيار ممتاز لمحب أندرويد</td><td>أقوى مواصفات ورقية</td><td>تصميم أنيق وسعر منافس</td></tr>
+<tr>
+    <td>المعالج</td>
+    <td class="me">A15 Bionic، أداء مستمر وثابت</td>
+    <td>
+        <span class="c-val c1">Exynos 1580، متوسط وكافٍ</span>
+        <span class="c-val c2" style="display:none">Dimensity 8400 Ultra، الأقوى رقميًا</span>
+        <span class="c-val c3" style="display:none">فئة متوسطة، للاستخدام اليومي</span>
+    </td>
+</tr>
+<tr>
+    <td>الألعاب</td>
+    <td class="me">ثبات ممتاز وتحسين لـiOS</td>
+    <td>
+        <span class="c-val c1">جيد في الألعاب المتوسطة</span>
+        <span class="c-val c2" style="display:none">قوي جدًا لكن الحرارة قد ترتفع</span>
+        <span class="c-val c3" style="display:none">جيد للألعاب الخفيفة والمتوسطة</span>
+    </td>
+</tr>
+<tr>
+    <td>التصوير</td>
+    <td class="me">الأفضل في الفيديو، ألوان ثابتة</td>
+    <td>
+        <span class="c-val c1">صور جيدة وتكبير محدود</span>
+        <span class="c-val c2" style="display:none">صور قوية نهاراً، فيديو أقل ثباتاً</span>
+        <span class="c-val c3" style="display:none">صور بورتريه جيدة، فيديو أقل</span>
+    </td>
+</tr>
+<tr>
+    <td>الشاشة</td>
+    <td class="me">OLED، 60 هرتز</td>
+    <td>
+        <span class="c-val c1">AMOLED، 120 هرتز</span>
+        <span class="c-val c2" style="display:none">AMOLED، 120 هرتز</span>
+        <span class="c-val c3" style="display:none">AMOLED، 120 هرتز</span>
+    </td>
+</tr>
+<!-- الصف الجديد للأمان والدفع -->
+<tr>
+    <td>الأمان والدفع</td>
+    <td class="me">أمان Face ID ثلاثي الأبعاد، دعم Apple Pay</td>
+    <td>
+        <span class="c-val c1">بصمة إصبع، محافظ وتطبيقات NFC</span>
+        <span class="c-val c2" style="display:none">بصمة إصبع، محافظ وتطبيقات NFC</span>
+        <span class="c-val c3" style="display:none">بصمة إصبع، محافظ وتطبيقات NFC</span>
+    </td>
+</tr>
+<tr>
+    <td>التحديثات</td>
+    <td class="me">نحو 3 سنوات إضافية متوقعة</td>
+    <td>
+        <span class="c-val c1">دعم طويل وممتاز من سامسونج لهذه الفئة</span>
+        <span class="c-val c2" style="display:none">دعم تحديثات أقصر عادةً</span>
+        <span class="c-val c3" style="display:none">دعم تحديثات أقصر عادةً</span>
+    </td>
+</tr>
+<tr>
+    <td>إعادة البيع</td>
+    <td class="me">الأعلى والأسرع بالسوق</td>
+    <td>
+        <span class="c-val c1">جيدة</span>
+        <span class="c-val c2" style="display:none">متوسطة وتنخفض قيمته بسرعة</span>
+        <span class="c-val c3" style="display:none">متوسطة إلى ضعيفة</span>
+    </td>
+</tr>
+<tr>
+    <td>الخلاصة</td>
+    <td class="me"><strong>الأفضل توازنًا، قيمة، وأماناً</strong></td>
+    <td>
+        <span class="c-val c1">خيار ممتاز لمحب أندرويد المستقر</span>
+        <span class="c-val c2" style="display:none">لمحبي الأرقام والمواصفات الورقية</span>
+        <span class="c-val c3" style="display:none">تصميم أنيق وسعر اقتصادي منافس</span>
+    </td>
+</tr>
 </tbody></table></div>
 <p class="note">الأسعار والمواصفات تتغير باستمرار في السوق المصري، تواصل معنا للسعر الحالي. المقارنة عامة وتعتمد على المواصفات المعلنة.</p>
 </div></section>
@@ -261,12 +385,106 @@ footer{padding:26px 0 90px;text-align:center;color:var(--mut);font-size:.85rem}
 </div></div></section>
 </main>
 
-<footer><div class="w">© <span id="y"></span> Iphone 13 EG · آيفون 13 العادي في مصر<br>Apple وiPhone علامتان تجاريتان مملوكتان لشركة Apple Inc. وهذه الصفحة غير تابعة لها.</div></footer>
+<footer><div class="w">
+    © <span id="y"></span> Iphone 13 EG · آيفون 13 العادي في مصر<br>
+    Apple وiPhone علامتان تجاريتان مملوكتان لشركة Apple Inc. وهذه الصفحة غير تابعة لها.<br><br>
+    <a href="#" data-modal="settings">الإعدادات</a> | 
+    <a href="#" data-modal="terms">شروط الاستخدام</a> | 
+    <a href="#" data-modal="privacy">سياسة الخصوصية</a> | 
+    <a href="#" data-modal="return">الاسترجاع</a>
+</div></footer>
 
 <a class="fab" href="https://wa.me/201154146463" aria-label="واتساب" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11 19.8L3 29l6.4-2A13 13 0 1 0 16 3zm0 2.4a10.6 10.6 0 1 1-5.6 19.6l-.4-.2-3.8 1.2 1.2-3.7-.3-.4A10.6 10.6 0 0 1 16 5.4zm-4 5.2c-.3 0-.7.1-1 .5-.4.4-1.3 1.3-1.3 3.1s1.4 3.6 1.5 3.8c.2.2 2.6 4.1 6.4 5.6 3.2 1.2 3.8 1 4.5.9.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.2-.4-.3-.8-.5l-2.3-1.1c-.3-.1-.6-.2-.8.2l-1.1 1.3c-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7c.2-.2.2-.4.4-.6.1-.3.1-.5 0-.7l-1-2.4c-.3-.6-.5-.5-.8-.5z"/></svg></a>
 
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="close-modal">&times;</span>
+        <h2 id="modal-title">العنوان</h2>
+        <div id="modal-body" class="modal-body">المحتوى هنا</div>
+    </div>
+</div>
+
 <script>
 (function(){
+// بيانات النوافذ المنبثقة
+const modalData = {
+    settings: {
+        title: "الإعدادات",
+        body: "<p>مرحباً بك في إعدادات الموقع.</p><p>في الوقت الحالي، الموقع متوافق تلقائياً مع الوضع الليلي (Dark Mode) حسب إعدادات جهازك الشخصي لضمان راحة عينيك.</p>"
+    },
+    terms: {
+        title: "شروط الاستخدام",
+        body: "<p>1. كافة المعلومات والمواصفات المعروضة قابلة للتغيير بناءً على تحديثات السوق.</p><p>2. الأسعار تعتمد على وقت التواصل وتوفر المخزون الفعلي.</p><p>3. استخدامك لهذه الصفحة يعني موافقتك على التواصل المباشر عبر واتساب لإتمام عمليات الحجز أو الاستفسار.</p>"
+    },
+    privacy: {
+        title: "سياسة الخصوصية",
+        body: "<p>نحن نحترم خصوصيتك بالكامل.</p><p>1. لا نقوم بجمع أو تخزين أو بيع أرقام الهواتف أو البيانات الشخصية التي تشاركها معنا عبر واتساب لأي طرف ثالث.</p><p>2. هذه الصفحة لا تستخدم ملفات تعريف ارتباط (Cookies) تتبعية مزعجة، بل تهدف فقط لتقديم المعلومة لك بأسرع وأأمن شكل ممكن.</p>"
+    },
+    return: {
+        title: "سياسة البيع والاسترجاع",
+        body: "<p>1. يتم فحص الجهاز بالكامل مع العميل قبل الاستلام للتأكد من حالته.</p><p>2. يحق للعميل استرجاع المنتج خلال 14 يوماً في حالة اكتشاف (عيب صناعة) فقط، وذلك طبقاً لقانون حماية المستهلك المصري.</p><p>3. يُشترط للاسترجاع أن يكون الجهاز والعلبة بكامل الإكسسوارات وفي حالتهم الأصلية تماماً بدون أي خدوش أو سوء استخدام.</p>"
+    }
+};
+
+// التحكم في القائمة المنسدلة (الناف بار)
+const menuBtn = document.getElementById('menu-btn');
+const navMenu = document.getElementById('nav-menu');
+
+menuBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    navMenu.classList.toggle('active');
+});
+
+// التحكم في النوافذ المنبثقة (Modals)
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modal-title');
+const modalBody = document.getElementById('modal-body');
+const closeModalBtn = document.getElementById('close-modal');
+
+document.querySelectorAll('[data-modal]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const key = this.getAttribute('data-modal');
+        if(modalData[key]) {
+            modalTitle.textContent = modalData[key].title;
+            modalBody.innerHTML = modalData[key].body;
+            modal.classList.add('active');
+            navMenu.classList.remove('active');
+        }
+    });
+});
+
+function closeModal() {
+    modal.classList.remove('active');
+}
+closeModalBtn.addEventListener('click', closeModal);
+modal.addEventListener('click', function(e) {
+    if(e.target === modal) closeModal();
+});
+
+document.addEventListener('click', function(e) {
+    if (!navMenu.contains(e.target) && e.target !== menuBtn) {
+        navMenu.classList.remove('active');
+    }
+});
+
+// التحكم في القائمة المنسدلة للمقارنات (Dropdown Comparison)
+const compSel = document.getElementById('comp-sel');
+const compVals = document.querySelectorAll('.c-val');
+if(compSel) {
+    compSel.addEventListener('change', function(e) {
+        const selectedClass = e.target.value; // c1, c2, c3
+        compVals.forEach(span => {
+            if(span.classList.contains(selectedClass)) {
+                span.style.display = 'block';
+            } else {
+                span.style.display = 'none';
+            }
+        });
+    });
+}
+
+// الكود الأصلي لتثبيت التطبيق
 var svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A7C1D9"/><stop offset=".6" stop-color="#FAE0DC"/><stop offset="1" stop-color="#F0E4D3"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="url(#g)"/><rect x="160" y="80" width="192" height="352" rx="38" fill="#1F2020"/><rect x="172" y="92" width="168" height="328" rx="28" fill="#cfe0ee"/><rect x="290" y="108" width="40" height="40" rx="11" fill="#1F2020"/><text x="256" y="330" font-family="Arial" font-weight="800" font-size="64" text-anchor="middle" fill="#1F2020">13</text></svg>';
 var icon='data:image/svg+xml,'+encodeURIComponent(svg);
 var m={name:"Iphone 13 EG",short_name:"iPhone 13 EG",description:"آيفون 13 العادي في مصر: مميزات، عيوب، مقارنة وطلب عبر واتساب",lang:"ar",dir:"rtl",start_url:".",scope:".",display:"standalone",background_color:"#fdf8f4",theme_color:"#A7C1D9",icons:[{src:icon,sizes:"any",type:"image/svg+xml",purpose:"any"},{src:icon,sizes:"512x512",type:"image/svg+xml",purpose:"maskable"}]};
